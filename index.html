@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nasrin Afroz Kakoli | Full-Stack Developer</title>
+<meta name="description" content="Nasrin Afroz Kakoli, full-stack developer with 8+ years building Laravel, Vue.js and SaaS platforms, including Laravel MCP AI tool servers.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f7fa;
+    --text: #1d2433;
+    --muted: #5b6475;
+    --accent: #2563eb;
+    --border: #e3e7ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1420;
+      --surface: #171e2d;
+      --text: #e6eaf2;
+      --muted: #9aa4b8;
+      --accent: #6ea8ff;
+      --border: #26304a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1420;
+    --surface: #171e2d;
+    --text: #e6eaf2;
+    --muted: #9aa4b8;
+    --accent: #6ea8ff;
+    --border: #26304a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  header.hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); }
+  h1 { font-size: 2.4rem; margin: 0 0 4px; line-height: 1.2; }
+  .role { font-size: 1.15rem; color: var(--accent); margin: 0 0 16px; font-weight: 600; }
+  .summary { color: var(--muted); max-width: 680px; margin: 0 0 20px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.95rem; }
+  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-size: 1.4rem; margin: 0 0 20px; }
+  .projects { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
+  .card p { margin: 0 0 10px; color: var(--muted); font-size: 0.95rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
+  .tags li {
+    font-size: 0.78rem;
+    padding: 2px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .job { margin-bottom: 28px; }
+  .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
+  .job-head h3 { margin: 0; font-size: 1.05rem; }
+  .job-head .meta { color: var(--muted); font-size: 0.92rem; }
+  .job .company { color: var(--muted); font-size: 0.95rem; margin: 2px 0 8px; }
+  ul.points { margin: 0; padding-left: 20px; }
+  ul.points li { margin-bottom: 6px; }
+  .skills { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .skills h3 { font-size: 0.95rem; margin: 0 0 6px; }
+  .skills p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .edu p { margin: 0 0 8px; }
+  .muted { color: var(--muted); }
+  footer { padding: 28px 0 40px; color: var(--muted); font-size: 0.9rem; text-align: center; }
+  @media (max-width: 480px) {
+    h1 { font-size: 1.9rem; }
+    header.hero { padding: 40px 0 28px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Nasrin Afroz Kakoli</h1>
+    <p class="role">Full-Stack Software Developer</p>
+    <p class="summary">8+ years building enterprise web applications, multi-tenant SaaS platforms and AI tooling with Laravel, Vue.js and modern PHP. Recently building Model Context Protocol (MCP) servers that let AI assistants work safely inside production applications.</p>
+    <div class="links">
+      <a href="mailto:nasrinafrozkakoli@gmail.com">nasrinafrozkakoli@gmail.com</a>
+      <a href="https://www.linkedin.com/in/nafrozkakoli/">LinkedIn</a>
+      <a href="https://github.com/NasrinAfrozKakoli">GitHub</a>
+      <a href="https://github.com/NafCode/laravel-snapshot-backup">Open source: laravel-snapshot-backup</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h2>Featured Work</h2>
+      <div class="projects">
+        <article class="card">
+          <h3>Laravel MCP Tool Servers</h3>
+          <p>Built Model Context Protocol servers exposing 40+ read-only tools to AI copilots. Enforces tenant isolation and per-record authorization so every AI answer matches what the user can see in the application.</p>
+          <ul class="tags">
+            <li>Laravel</li><li>MCP</li><li>AI Tooling</li><li>Authorization</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>PlanDental: HR and Operations Platform</h3>
+          <p>Enterprise dental practice platform with 27+ modules. Contributed 1,000+ commits to core features, including a multi-level alert escalation engine with Redis distributed locking.</p>
+          <ul class="tags">
+            <li>Laravel 10</li><li>PHP 8.2</li><li>Livewire</li><li>Vue.js</li><li>Redis</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>InventOS: Retail Platform</h3>
+          <p>Full retail business platform with 40+ data models covering POS, CRM, accounting and inventory. Integrated Stripe, PayPal, Pathao and WooCommerce for end-to-end commerce.</p>
+          <ul class="tags">
+            <li>Laravel 10</li><li>Vue.js</li><li>Stripe</li><li>REST API</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Distrion: Multi-Tenant POS</h3>
+          <p>Architected a scalable multi-tenant POS with per-tenant configuration for currency, theme and POS settings, delivering white-label solutions without separate deployments.</p>
+          <ul class="tags">
+            <li>Multi-tenancy</li><li>Architecture</li><li>Laravel</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Autopark Tenancy</h3>
+          <p>Multi-tenant parking management system with secure data isolation across shared infrastructure, using OAuth2 for API access.</p>
+          <ul class="tags">
+            <li>Stancl Tenancy</li><li>OAuth2</li><li>Laravel</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>laravel-snapshot-backup</h3>
+          <p>Open-source Laravel package for rsync-based incremental backups with hard-link deduplication, so unchanged files use no extra storage. Published on GitHub.</p>
+          <ul class="tags">
+            <li>PHP 8.2+</li><li>Laravel 10/11</li><li>Open Source</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Software Developer</h3>
+          <span class="meta">April 2024 to Present</span>
+        </div>
+        <p class="company">DingiDevs, Dhaka, Bangladesh</p>
+        <ul class="points">
+          <li>Built Laravel MCP tool servers for AI copilots, with tenant isolation and per-record authorization.</li>
+          <li>Contributed 1,000+ commits to an enterprise HR and operations platform, improving stability and delivery speed.</li>
+          <li>Built contract lifecycle management with auto-renewal and conflict detection, reducing manual HR work.</li>
+          <li>Implemented digital signature and PDF versioning workflows with multi-party signing.</li>
+          <li>Led a system-wide UI migration from Bootstrap to Tailwind CSS across 120+ files.</li>
+          <li>Implemented a Firebase push notification system with user-level controls and logging.</li>
+          <li>Mentored a junior developer and led code reviews to reduce regressions.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Software Developer</h3>
+          <span class="meta">June 2021 to February 2024</span>
+        </div>
+        <p class="company">M3 Technologies, Dhaka, Bangladesh</p>
+        <ul class="points">
+          <li>Implemented the InventOS retail platform with 40+ data models, covering POS, CRM, accounting and inventory.</li>
+          <li>Integrated Pathao, Stripe, PayPal and WooCommerce, with real-time inventory synchronization.</li>
+          <li>Built a multi-tenant system with Stancl Tenancy and OAuth2 for secure data isolation.</li>
+          <li>Developed a Go microservice for ANPR camera processing, decoupling hardware from the core application.</li>
+          <li>Extended an HR system with biometric attendance integration and role-based access control.</li>
+          <li>Upgraded a legacy Laravel system from v7 to v10, improving performance and maintainability.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <h3>Web Developer</h3>
+          <span class="meta">2017 to 2021</span>
+        </div>
+        <p class="company">DexCodex and PSTC, Dhaka, Bangladesh</p>
+        <ul class="points">
+          <li>Built a conference management system with a CMS, streamlining submissions and event operations.</li>
+          <li>Developed an alumni portal with database-driven navigation for non-technical content management.</li>
+          <li>Managed deployments on cPanel, VPS and DigitalOcean, including DNS configuration.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div>
+          <h3>Backend</h3>
+          <p>PHP, Laravel (7 to 10), Go, REST APIs, Laravel Passport and Sanctum, JWT, MySQL</p>
+        </div>
+        <div>
+          <h3>Frontend</h3>
+          <p>Vue.js, Livewire, JavaScript, Tailwind CSS, Bootstrap, HTML5, CSS3</p>
+        </div>
+        <div>
+          <h3>AI and Integrations</h3>
+          <p>Model Context Protocol (MCP), Stripe, PayPal, Twilio, Google Calendar API, Firebase</p>
+        </div>
+        <div>
+          <h3>Architecture</h3>
+          <p>Multi-tenancy (Stancl Tenancy), RBAC (Spatie Permission), queues, Redis, event-driven design</p>
+        </div>
+        <div>
+          <h3>DevOps</h3>
+          <p>Linux, VPS, DigitalOcean, Git, DNS management</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap edu">
+      <h2>Education</h2>
+      <p><strong>Bachelor of Computer Science and Engineering</strong>, Stamford University Bangladesh (2013 to 2017), GPA 3.86 / 4.00</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Nasrin Afroz Kakoli | <a href="mailto:nasrinafrozkakoli@gmail.com">Email</a> | <a href="https://www.linkedin.com/in/nafrozkakoli/">LinkedIn</a> | <a href="https://github.com/NasrinAfrozKakoli">GitHub</a>
+  </div>
+</footer>
+
+</body>
+</html>
