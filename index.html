@@ -3,250 +3,425 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nasrin Afroz Kakoli | Full-Stack Developer</title>
+<title>Nasrin Afroz Kakoli | Full-Stack Developer, Laravel, Vue.js, MCP</title>
 <meta name="description" content="Nasrin Afroz Kakoli, full-stack developer with 8+ years building Laravel, Vue.js and SaaS platforms, including Laravel MCP AI tool servers.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236d28d9'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' fill='%23ffffff' text-anchor='middle'%3E%3Ctspan font-size='36' font-weight='700'%3EN%3C/tspan%3E%3Ctspan font-size='28' font-weight='600' dx='1'%3Eaf%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #ffffff;
-    --surface: #f5f7fa;
-    --text: #1d2433;
-    --muted: #5b6475;
-    --accent: #2563eb;
-    --border: #e3e7ee;
+    --bg: #f7f6fb;
+    --surface: #ffffff;
+    --text: #16171d;
+    --muted: #42454f;
+    --faint: #616474;
+    --line: rgba(30, 20, 60, 0.1);
+    --line-strong: rgba(30, 20, 60, 0.2);
+    --accent: #5b21b6;
+    --accent-hover: #4c1d95;
+    --accent-soft: rgba(91, 33, 182, 0.1);
+    --font-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --side: 320px;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d0b14;
+    --surface: #161321;
+    --text: #ececf1;
+    --muted: #a4a7b5;
+    --faint: #8a8d9c;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.16);
+    --accent: #a78bfa;
+    --accent-hover: #c4b5fd;
+    --accent-soft: rgba(167, 139, 250, 0.16);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0f1420;
-      --surface: #171e2d;
-      --text: #e6eaf2;
-      --muted: #9aa4b8;
-      --accent: #6ea8ff;
-      --border: #26304a;
+      --bg: #0d0b14;
+      --surface: #161321;
+      --text: #ececf1;
+      --muted: #a4a7b5;
+      --faint: #8a8d9c;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.16);
+      --accent: #a78bfa;
+      --accent-hover: #c4b5fd;
+      --accent-soft: rgba(167, 139, 250, 0.16);
     }
   }
-  :root[data-theme="dark"] {
-    --bg: #0f1420;
-    --surface: #171e2d;
-    --text: #e6eaf2;
-    --muted: #9aa4b8;
-    --accent: #6ea8ff;
-    --border: #26304a;
-  }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
+    font-family: var(--font-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
   }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
   a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  header.hero { padding: 64px 0 40px; border-bottom: 1px solid var(--border); }
-  h1 { font-size: 2.4rem; margin: 0 0 4px; line-height: 1.2; }
-  .role { font-size: 1.15rem; color: var(--accent); margin: 0 0 16px; font-weight: 600; }
-  .summary { color: var(--muted); max-width: 680px; margin: 0 0 20px; }
-  .links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.95rem; }
-  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
-  section:last-of-type { border-bottom: none; }
-  h2 { font-size: 1.4rem; margin: 0 0 20px; }
-  .projects { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .card {
+  a:hover { color: var(--accent-hover); }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; margin: 0; }
+
+  /* Sidebar */
+  .side {
+    position: fixed; top: 0; left: 0; bottom: 0; width: var(--side);
+    padding: 48px 36px; display: flex; flex-direction: column; gap: 36px;
+    border-right: 1px solid var(--line);
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
+    overflow-y: auto;
   }
-  .card h3 { margin: 0 0 6px; font-size: 1.05rem; }
-  .card p { margin: 0 0 10px; color: var(--muted); font-size: 0.95rem; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
-  .tags li {
-    font-size: 0.78rem;
-    padding: 2px 9px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    color: var(--muted);
+  .side .name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 8px; }
+  .side .role { color: var(--muted); font-size: 0.95rem; margin: 0 0 14px; }
+  .side .avail { display: inline-flex; align-items: center; gap: 8px; font-size: 0.88rem; color: var(--muted); }
+  .side .avail::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+  .side nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+  .side nav a {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 12px; margin: 0 -12px; border-radius: 8px; color: var(--muted); font-size: 0.95rem;
   }
-  .job { margin-bottom: 28px; }
-  .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
-  .job-head h3 { margin: 0; font-size: 1.05rem; }
-  .job-head .meta { color: var(--muted); font-size: 0.92rem; }
-  .job .company { color: var(--muted); font-size: 0.95rem; margin: 2px 0 8px; }
-  ul.points { margin: 0; padding-left: 20px; }
-  ul.points li { margin-bottom: 6px; }
-  .skills { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .skills h3 { font-size: 0.95rem; margin: 0 0 6px; }
-  .skills p { margin: 0; color: var(--muted); font-size: 0.95rem; }
-  .edu p { margin: 0 0 8px; }
-  .muted { color: var(--muted); }
-  footer { padding: 28px 0 40px; color: var(--muted); font-size: 0.9rem; text-align: center; }
-  @media (max-width: 480px) {
-    h1 { font-size: 1.9rem; }
-    header.hero { padding: 40px 0 28px; }
+  .side nav a::after { content: "\2192"; opacity: 0; transform: translateX(-4px); transition: 0.2s ease; color: var(--accent); }
+  .side nav a:hover { background: var(--accent-soft); color: var(--text); }
+  .side nav a:hover::after { opacity: 1; transform: none; }
+  .side .contact-list { display: grid; gap: 12px; font-size: 0.92rem; }
+  .side .contact-list a { color: var(--text); word-break: break-all; }
+  .side .contact-list span { display: block; font-family: var(--font-mono); font-size: 0.72rem; color: var(--faint); text-transform: uppercase; letter-spacing: 0.08em; }
+  .side-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 0.82rem; color: var(--faint); }
+  .theme-btn {
+    border: 1px solid var(--line-strong); background: transparent; color: var(--text);
+    border-radius: 8px; padding: 6px 12px; font: inherit; font-size: 0.82rem; cursor: pointer;
+  }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Content column */
+  main { margin-left: var(--side); padding: 0 72px; }
+  .block { position: relative; margin-top: 80px; padding: 80px 0 0; }
+  .block::before {
+    content: ""; position: absolute; top: 0; left: -72px; right: -72px;
+    height: 2px; background: #dcbdee;
+  }
+  .block-label { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.12em; margin: 0 0 22px; display: block; }
+
+  /* Intro */
+  .intro { padding: 88px 0 0; }
+  .intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 56px; align-items: start; }
+  .intro-photo { margin: 0; }
+  .intro-photo img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+  .intro h1 { font-size: clamp(2.3rem, 4.6vw, 3.6rem); font-weight: 800; line-height: 1.05; margin: 0 0 26px; }
+  .intro h1 em { font-style: normal; color: var(--accent); }
+  .intro p { color: var(--muted); font-size: 1.08rem; max-width: 640px; margin: 0 0 14px; }
+  .intro p strong { color: var(--text); font-weight: 600; }
+  .meta-strip { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .meta-strip span {
+    font-family: var(--font-mono); font-size: 0.8rem; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--line-strong); color: var(--muted);
+  }
+  .meta-strip span b { color: var(--accent); font-weight: 500; }
+
+  /* Projects as a row list */
+  .proj-row {
+    position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 0 20px; padding: 28px 16px;
+    border-top: 1px solid var(--line); transition: background 0.3s ease;
+  }
+  .proj-list .proj-row:last-child { border-bottom: 1px solid var(--line); }
+  .proj-row::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--accent); transform: scaleY(0); transform-origin: top;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .proj-row:hover { background: var(--accent-soft); }
+  .proj-row:hover::before { transform: scaleY(1); }
+  .proj-row:hover .num { color: var(--accent); }
+  .proj-row .num { transition: color 0.3s ease; }
+  .details { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 6px; }
+  .details li { position: relative; padding-left: 16px; color: var(--muted); font-size: 0.92rem; }
+  .details li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 6px; height: 1.5px; background: var(--accent); }
+  .proj-row .num { font-family: var(--font-mono); font-size: 0.85rem; color: var(--faint); padding-top: 4px; }
+  .proj-row h3 { font-size: 1.35rem; margin: 0 0 6px; }
+  .proj-row p { color: var(--muted); margin: 0 0 12px; max-width: 680px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px 8px; list-style: none; padding: 0; margin: 0; }
+  .chips li { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); background: var(--accent-soft); padding: 3px 9px; border-radius: 4px; }
+
+  /* Experience */
+  .role-block { padding: 0 0 40px; }
+  .role-block h3 { font-size: 1.25rem; margin: 0; }
+  .role-block .sub { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.92rem; color: var(--faint); margin: 4px 0 14px; }
+  .role-block .sub b { color: var(--accent); font-weight: 600; }
+  .role-block ul { margin: 0; padding-left: 18px; color: var(--muted); }
+  .role-block li { margin-bottom: 7px; }
+  .role-block li::marker { color: var(--accent); }
+
+  /* Skills as a definition list */
+  .skills dl { margin: 0; display: grid; }
+  .skills .skill-row { display: grid; grid-template-columns: 170px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .skills .skill-row:last-child { border-bottom: 1px solid var(--line); }
+  .skills dt { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); padding-top: 3px; }
+  .skills dd { margin: 0; color: var(--text); }
+
+  /* Education */
+  .edu p { margin: 0; }
+  .edu strong { font-family: var(--font-display); font-size: 1.2rem; }
+  .edu > div > span { color: var(--muted); display: block; margin-top: 4px; }
+
+  /* Closing contact */
+  .closing { padding: 130px 0 120px; }
+  .closing h2 { font-size: clamp(2rem, 4.4vw, 3.2rem); font-weight: 800; line-height: 1.08; margin: 0 0 22px; max-width: 700px; }
+  .closing p { color: var(--muted); max-width: 560px; margin: 0 0 26px; }
+  .mail-big { font-family: var(--font-display); font-size: clamp(1.25rem, 2.6vw, 1.7rem); font-weight: 700; color: var(--text); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+  .mail-big:hover { color: var(--accent); }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .side {
+      position: static; width: auto; border-right: none; border-bottom: 1px solid var(--line);
+      padding: 28px 24px; gap: 20px; overflow: visible;
+    }
+    .side nav ul { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+    .side nav a { padding: 6px 10px; margin: 0; }
+    .side nav a::after { display: none; }
+    .side .contact-list { display: none; }
+    .side-foot { margin-top: 0; }
+    main { margin-left: 0; padding: 0 24px; }
+    .block::before { left: -24px; right: -24px; }
+    .intro { padding-top: 56px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 36px; }
+    .intro-photo { order: -1; max-width: 340px; }
+    .block { padding-top: 72px; }
+    .skills .skill-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+  @media (max-width: 560px) {
+    .proj-row { grid-template-columns: 1fr; gap: 6px; }
+    .closing { padding: 90px 0 80px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
   }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="wrap">
-    <h1>Nasrin Afroz Kakoli</h1>
+<aside class="side">
+  <div>
+    <p class="name">Nasrin Afroz Kakoli</p>
     <p class="role">Full-Stack Software Developer</p>
-    <p class="summary">8+ years building enterprise web applications, multi-tenant SaaS platforms and AI tooling with Laravel, Vue.js and modern PHP. Recently building Model Context Protocol (MCP) servers that let AI assistants work safely inside production applications.</p>
-    <div class="links">
-      <a href="mailto:nasrinafrozkakoli@gmail.com">nasrinafrozkakoli@gmail.com</a>
-      <a href="https://www.linkedin.com/in/nafrozkakoli/">LinkedIn</a>
-      <a href="https://github.com/NasrinAfrozKakoli">GitHub</a>
-      <a href="https://github.com/NafCode/laravel-snapshot-backup">Open source: laravel-snapshot-backup</a>
-    </div>
+    <span class="avail">Open to full-stack roles</span>
   </div>
-</header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="contact-list">
+    <div><span>Email</span><a href="mailto:nasrinafrozkakoli@gmail.com">nasrinafrozkakoli@gmail.com</a></div>
+    <div><span>LinkedIn</span><a href="https://www.linkedin.com/in/nafrozkakoli/">linkedin.com/in/nafrozkakoli</a></div>
+    <div><span>GitHub</span><a href="https://github.com/NasrinAfrozKakoli">github.com/NasrinAfrozKakoli</a></div>
+  </div>
+
+  <div class="side-foot">
+    <span>Dhaka, Bangladesh</span>
+    <button class="theme-btn" id="theme-toggle" type="button">Dark mode</button>
+  </div>
+</aside>
 
 <main>
-  <section>
-    <div class="wrap">
-      <h2>Featured Work</h2>
-      <div class="projects">
-        <article class="card">
+  <section class="intro" id="about">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <h1>I build multi&#8209;tenant platforms and <em>AI tools</em>.</h1>
+        <p>Full-stack developer with 8+ years of experience in Laravel, Vue.js and modern PHP. Most of my work is enterprise software: shared infrastructure, per-client configuration and data that must stay isolated between tenants.</p>
+        <p>Lately I've been building <strong>Model Context Protocol servers</strong> that let AI assistants answer questions from live application data.</p>
+        <div class="meta-strip">
+          <span><b>8+</b> years</span>
+          <span><b>27+</b> module HR platform</span>
+          <span><b>40+</b> MCP tools</span>
+          <span><b>Laravel</b> 10 / PHP 8.2</span>
+        </div>
+      </div>
+      <figure class="intro-photo">
+        <img src="n-afroz-portrait.jpg" alt="Portrait of Nasrin Afroz Kakoli" width="1080" height="1350">
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="projects">
+    <span class="block-label reveal">Projects</span>
+    <div class="proj-list">
+      <article class="proj-row reveal">
+        <span class="num">01</span>
+        <div>
           <h3>Laravel MCP Tool Servers</h3>
-          <p>Built Model Context Protocol servers exposing 40+ read-only tools to AI copilots. Enforces tenant isolation and per-record authorization so every AI answer matches what the user can see in the application.</p>
-          <ul class="tags">
-            <li>Laravel</li><li>MCP</li><li>AI Tooling</li><li>Authorization</li>
+          <p>Model Context Protocol servers exposing 40+ read-only tools to AI copilots.</p>
+          <ul class="details">
+            <li>Architected the tool layer and its authorization model, and wrote the dev guide</li>
+            <li>Serves AI copilots such as Julian and the System Assistants</li>
+            <li>Tenant isolation enforced on every query</li>
+            <li>Per-record checks, so answers match the user's own screens</li>
           </ul>
-        </article>
-        <article class="card">
-          <h3>PlanDental: HR and Operations Platform</h3>
-          <p>Enterprise dental practice platform with 27+ modules. Contributed 1,000+ commits to core features, including a multi-level alert escalation engine with Redis distributed locking.</p>
-          <ul class="tags">
-            <li>Laravel 10</li><li>PHP 8.2</li><li>Livewire</li><li>Vue.js</li><li>Redis</li>
-          </ul>
-        </article>
-        <article class="card">
+          <ul class="chips"><li>Laravel</li><li>MCP</li><li>AI tooling</li><li>Authorization</li></ul>
+        </div>
+      </article>
+      <article class="proj-row reveal">
+        <span class="num">02</span>
+        <div>
+          <h3>PlanDental: HR and Operations</h3>
+          <p>Enterprise dental practice platform with 27+ modules. 1,000+ commits to core features, including a multi-level alert escalation engine with Redis distributed locking.</p>
+          <ul class="chips"><li>Laravel 10</li><li>PHP 8.2</li><li>Livewire</li><li>Vue.js</li><li>Redis</li></ul>
+        </div>
+      </article>
+      <article class="proj-row reveal">
+        <span class="num">03</span>
+        <div>
           <h3>InventOS: Retail Platform</h3>
-          <p>Full retail business platform with 40+ data models covering POS, CRM, accounting and inventory. Integrated Stripe, PayPal, Pathao and WooCommerce for end-to-end commerce.</p>
-          <ul class="tags">
-            <li>Laravel 10</li><li>Vue.js</li><li>Stripe</li><li>REST API</li>
-          </ul>
-        </article>
-        <article class="card">
+          <p>Retail business platform with 40+ data models covering POS, CRM, accounting and inventory, with Stripe, PayPal, Pathao and WooCommerce integrations.</p>
+          <ul class="chips"><li>Laravel 10</li><li>Vue.js</li><li>Stripe</li><li>REST API</li></ul>
+        </div>
+      </article>
+      <article class="proj-row reveal">
+        <span class="num">04</span>
+        <div>
           <h3>Distrion: Multi-Tenant POS</h3>
-          <p>Architected a scalable multi-tenant POS with per-tenant configuration for currency, theme and POS settings, delivering white-label solutions without separate deployments.</p>
-          <ul class="tags">
-            <li>Multi-tenancy</li><li>Architecture</li><li>Laravel</li>
-          </ul>
-        </article>
-        <article class="card">
+          <p>Multi-tenant point-of-sale architecture with per-tenant currency, theme and POS settings, delivering white-label solutions without separate deployments.</p>
+          <ul class="chips"><li>Multi-tenancy</li><li>Architecture</li><li>Laravel</li></ul>
+        </div>
+      </article>
+      <article class="proj-row reveal">
+        <span class="num">05</span>
+        <div>
           <h3>Autopark Tenancy</h3>
-          <p>Multi-tenant parking management system with secure data isolation across shared infrastructure, using OAuth2 for API access.</p>
-          <ul class="tags">
-            <li>Stancl Tenancy</li><li>OAuth2</li><li>Laravel</li>
-          </ul>
-        </article>
-        <article class="card">
+          <p>Multi-tenant parking management system with secure data isolation across shared infrastructure and OAuth2-protected API access.</p>
+          <ul class="chips"><li>Stancl Tenancy</li><li>OAuth2</li><li>Laravel</li></ul>
+        </div>
+      </article>
+      <article class="proj-row reveal">
+        <span class="num">06</span>
+        <div>
           <h3>laravel-snapshot-backup</h3>
-          <p>Open-source Laravel package for rsync-based incremental backups with hard-link deduplication, so unchanged files use no extra storage. Published on GitHub.</p>
-          <ul class="tags">
-            <li>PHP 8.2+</li><li>Laravel 10/11</li><li>Open Source</li>
-          </ul>
-        </article>
-      </div>
+          <p>Open-source Laravel package for rsync-based incremental backups with hard-link deduplication, so unchanged files take no extra storage.</p>
+          <ul class="chips"><li>PHP 8.2+</li><li>Laravel 10/11</li><li>Open source</li></ul>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <h2>Experience</h2>
+  <section class="block" id="experience">
+    <span class="block-label reveal">Experience</span>
 
-      <div class="job">
-        <div class="job-head">
-          <h3>Software Developer</h3>
-          <span class="meta">April 2024 to Present</span>
-        </div>
-        <p class="company">DingiDevs, Dhaka, Bangladesh</p>
-        <ul class="points">
-          <li>Built Laravel MCP tool servers for AI copilots, with tenant isolation and per-record authorization.</li>
-          <li>Contributed 1,000+ commits to an enterprise HR and operations platform, improving stability and delivery speed.</li>
-          <li>Built contract lifecycle management with auto-renewal and conflict detection, reducing manual HR work.</li>
-          <li>Implemented digital signature and PDF versioning workflows with multi-party signing.</li>
-          <li>Led a system-wide UI migration from Bootstrap to Tailwind CSS across 120+ files.</li>
-          <li>Implemented a Firebase push notification system with user-level controls and logging.</li>
-          <li>Mentored a junior developer and led code reviews to reduce regressions.</li>
-        </ul>
-      </div>
+    <div class="role-block reveal">
+      <h3>Software Developer</h3>
+      <div class="sub"><b>DingiDevs</b><span>Dhaka</span><span>April 2024 to present</span></div>
+      <ul>
+        <li>Built a per-tenant architecture for a multi-tenant SaaS platform: module tables provisioned for every tenant, per-tenant database and cloud file backups replacing one global backup, and cache and media isolated per tenant.</li>
+        <li>Built contract lifecycle management with auto-renewal and conflict detection, reducing manual HR work.</li>
+        <li>Implemented digital signature and PDF versioning workflows with multi-party signing.</li>
+        <li>Led a system-wide UI migration from Bootstrap to Tailwind CSS across 120+ files.</li>
+        <li>Implemented a Firebase push notification system with user-level controls and logging.</li>
+        <li>Mentored a junior developer and led code reviews to reduce regressions.</li>
+      </ul>
+    </div>
 
-      <div class="job">
-        <div class="job-head">
-          <h3>Software Developer</h3>
-          <span class="meta">June 2021 to February 2024</span>
-        </div>
-        <p class="company">M3 Technologies, Dhaka, Bangladesh</p>
-        <ul class="points">
-          <li>Implemented the InventOS retail platform with 40+ data models, covering POS, CRM, accounting and inventory.</li>
-          <li>Integrated Pathao, Stripe, PayPal and WooCommerce, with real-time inventory synchronization.</li>
-          <li>Built a multi-tenant system with Stancl Tenancy and OAuth2 for secure data isolation.</li>
-          <li>Developed a Go microservice for ANPR camera processing, decoupling hardware from the core application.</li>
-          <li>Extended an HR system with biometric attendance integration and role-based access control.</li>
-          <li>Upgraded a legacy Laravel system from v7 to v10, improving performance and maintainability.</li>
-        </ul>
-      </div>
+    <div class="role-block reveal">
+      <h3>Software Developer</h3>
+      <div class="sub"><b>M3 Technologies</b><span>Dhaka</span><span>June 2021 to February 2024</span></div>
+      <ul>
+        <li>Implemented the InventOS retail platform (Laravel 10, Vue.js 2).</li>
+        <li>Built a multi-tenant system with Stancl Tenancy and OAuth2 for secure data isolation.</li>
+        <li>Developed a Go microservice for ANPR camera processing, decoupling hardware from the core application.</li>
+        <li>Extended an HR system with biometric attendance integration and role-based access control.</li>
+        <li>Upgraded a legacy Laravel system from v7 to v10, improving performance and maintainability.</li>
+      </ul>
+    </div>
 
-      <div class="job">
-        <div class="job-head">
-          <h3>Web Developer</h3>
-          <span class="meta">2017 to 2021</span>
-        </div>
-        <p class="company">DexCodex and PSTC, Dhaka, Bangladesh</p>
-        <ul class="points">
-          <li>Built a conference management system with a CMS, streamlining submissions and event operations.</li>
-          <li>Developed an alumni portal with database-driven navigation for non-technical content management.</li>
-          <li>Managed deployments on cPanel, VPS and DigitalOcean, including DNS configuration.</li>
-        </ul>
-      </div>
+    <div class="role-block reveal">
+      <h3>Web Developer</h3>
+      <div class="sub"><b>DexCodex and PSTC</b><span>Dhaka</span><span>2017 to 2021</span></div>
+      <ul>
+        <li>Built a conference management system with a CMS, streamlining submissions and event operations.</li>
+        <li>Developed an alumni portal with database-driven navigation for non-technical content management.</li>
+        <li>Managed deployments on cPanel, VPS and DigitalOcean, including DNS configuration.</li>
+      </ul>
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <h2>Skills</h2>
-      <div class="skills">
-        <div>
-          <h3>Backend</h3>
-          <p>PHP, Laravel (7 to 10), Go, REST APIs, Laravel Passport and Sanctum, JWT, MySQL</p>
-        </div>
-        <div>
-          <h3>Frontend</h3>
-          <p>Vue.js, Livewire, JavaScript, Tailwind CSS, Bootstrap, HTML5, CSS3</p>
-        </div>
-        <div>
-          <h3>AI and Integrations</h3>
-          <p>Model Context Protocol (MCP), Stripe, PayPal, Twilio, Google Calendar API, Firebase</p>
-        </div>
-        <div>
-          <h3>Architecture</h3>
-          <p>Multi-tenancy (Stancl Tenancy), RBAC (Spatie Permission), queues, Redis, event-driven design</p>
-        </div>
-        <div>
-          <h3>DevOps</h3>
-          <p>Linux, VPS, DigitalOcean, Git, DNS management</p>
-        </div>
-      </div>
+  <section class="block skills" id="skills">
+    <span class="block-label reveal">Skills</span>
+    <dl>
+      <div class="skill-row reveal"><dt>Backend</dt><dd>PHP, Laravel 7 to 10, Go, REST APIs, Passport and Sanctum, JWT, MySQL</dd></div>
+      <div class="skill-row reveal"><dt>Frontend</dt><dd>Vue.js, Livewire, JavaScript, Tailwind CSS, Bootstrap, HTML5 and CSS3</dd></div>
+      <div class="skill-row reveal"><dt>AI and integrations</dt><dd>Model Context Protocol, Stripe, PayPal, Twilio, Google Calendar API, Firebase</dd></div>
+      <div class="skill-row reveal"><dt>Architecture</dt><dd>Multi-tenancy, RBAC, queues, Redis, event-driven design</dd></div>
+      <div class="skill-row reveal"><dt>DevOps</dt><dd>Linux, VPS, DigitalOcean, Git, DNS management</dd></div>
+    </dl>
+  </section>
+
+  <section class="block edu" id="education">
+    <span class="block-label reveal">Education</span>
+    <div class="reveal">
+      <p><strong>Bachelor of Computer Science and Engineering</strong></p>
+      <span>Stamford University Bangladesh, 2013 to 2017, GPA 3.86 / 4.00</span>
     </div>
   </section>
 
-  <section>
-    <div class="wrap edu">
-      <h2>Education</h2>
-      <p><strong>Bachelor of Computer Science and Engineering</strong>, Stamford University Bangladesh (2013 to 2017), GPA 3.86 / 4.00</p>
+  <section class="closing" id="contact">
+    <div class="reveal">
+      <span class="block-label">Contact</span>
+      <h2>Have a multi-tenant or AI project in mind?</h2>
+      <p>I'm open to full-stack roles and interesting projects in Laravel, Vue.js and AI tooling. Email is the quickest way to reach me.</p>
+      <a class="mail-big" href="mailto:nasrinafrozkakoli@gmail.com">nasrinafrozkakoli@gmail.com</a>
     </div>
   </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    Nasrin Afroz Kakoli | <a href="mailto:nasrinafrozkakoli@gmail.com">Email</a> | <a href="https://www.linkedin.com/in/nafrozkakoli/">LinkedIn</a> | <a href="https://github.com/NasrinAfrozKakoli">GitHub</a>
-  </div>
-</footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    function isDark() {
+      return root.getAttribute('data-theme') === 'dark' ||
+        (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+    function syncLabel() { btn.textContent = isDark() ? 'Light mode' : 'Dark mode'; }
+    var stored = null;
+    try { stored = localStorage.getItem('theme'); } catch (e) {}
+    if (stored) root.setAttribute('data-theme', stored);
+    syncLabel();
+    btn.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      syncLabel();
+    });
+
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
 
 </body>
 </html>
